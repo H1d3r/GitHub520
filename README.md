@@ -5,7 +5,7 @@
 😘 让你“爱”上 GitHub，解决访问时图裂、加载慢的问题。
 </p>
 
-> 服务器已续费到 2024.12 共花了：1500+💰 [点击扫码赞助](https://cdn.jsdelivr.net/gh/521xueweihan/img_logo@main/logo/receiving_code.png)，感谢🙏
+> 服务器已续费到 2024.12 共花了：1500+💰 [点击扫码赞助](https://raw.hellogithub.com/code.png)，感谢🙏
 
 ## 一、介绍
 对 GitHub 说"爱"太难了：访问慢、图片加载不出来。
@@ -37,54 +37,55 @@
 ```bash
 # GitHub520 Host Start
 140.82.114.25                 alive.github.com
-140.82.112.5                  api.github.com
-185.199.110.153               assets-cdn.github.com
+140.82.114.5                  api.github.com
+185.199.109.153               assets-cdn.github.com
 185.199.111.133               avatars.githubusercontent.com
-185.199.108.133               avatars0.githubusercontent.com
-185.199.108.133               avatars1.githubusercontent.com
-185.199.111.133               avatars2.githubusercontent.com
-185.199.111.133               avatars3.githubusercontent.com
+185.199.111.133               avatars0.githubusercontent.com
+185.199.111.133               avatars1.githubusercontent.com
+185.199.108.133               avatars2.githubusercontent.com
+185.199.108.133               avatars3.githubusercontent.com
 185.199.111.133               avatars4.githubusercontent.com
-185.199.111.133               avatars5.githubusercontent.com
-185.199.108.133               camo.githubusercontent.com
+185.199.108.133               avatars5.githubusercontent.com
+185.199.111.133               camo.githubusercontent.com
 140.82.113.21                 central.github.com
-185.199.108.133               cloud.githubusercontent.com
+185.199.111.133               cloud.githubusercontent.com
 140.82.112.10                 codeload.github.com
 140.82.113.22                 collector.github.com
 185.199.111.133               desktop.githubusercontent.com
 185.199.108.133               favicons.githubusercontent.com
-140.82.114.3                  gist.github.com
-54.231.136.129                github-cloud.s3.amazonaws.com
-54.231.196.81                 github-com.s3.amazonaws.com
-52.216.204.51                 github-production-release-asset-2e65be.s3.amazonaws.com
-52.216.169.99                 github-production-repository-file-5c1aeb.s3.amazonaws.com
-54.231.161.33                 github-production-user-asset-6210df.s3.amazonaws.com
+140.82.112.3                  gist.github.com
+16.182.39.185                 github-cloud.s3.amazonaws.com
+54.231.135.1                  github-com.s3.amazonaws.com
+16.182.65.201                 github-production-release-asset-2e65be.s3.amazonaws.com
+52.217.10.252                 github-production-repository-file-5c1aeb.s3.amazonaws.com
+52.217.174.73                 github-production-user-asset-6210df.s3.amazonaws.com
 192.0.66.2                    github.blog
-140.82.114.3                  github.com
-140.82.113.17                 github.community
-185.199.110.154               github.githubassets.com
+140.82.114.4                  github.com
+140.82.114.17                 github.community
+185.199.109.154               github.githubassets.com
 151.101.193.194               github.global.ssl.fastly.net
 185.199.109.153               github.io
 185.199.111.133               github.map.fastly.net
 185.199.109.153               githubstatus.com
 140.82.113.26                 live.github.com
-185.199.111.133               media.githubusercontent.com
+185.199.108.133               media.githubusercontent.com
 185.199.111.133               objects.githubusercontent.com
 13.107.42.16                  pipelines.actions.githubusercontent.com
 185.199.111.133               raw.githubusercontent.com
 185.199.108.133               user-images.githubusercontent.com
 13.107.246.51                 vscode.dev
-140.82.114.22                 education.github.com
+140.82.112.21                 education.github.com
+185.199.111.133               private-user-images.githubusercontent.com
 
 
-# Update time: 2024-06-26T18:06:48+08:00
+# Update time: 2024-07-02T12:06:07+08:00
 # Update url: https://raw.hellogithub.com/hosts
 # Star me: https://github.com/521xueweihan/GitHub520
 # GitHub520 Host End
 
 ```
 
-该内容会自动定时更新， 数据更新时间：2024-06-26T18:06:48+08:00
+该内容会自动定时更新， 数据更新时间：2024-07-02T12:06:07+08:00
 
 #### 2.1.2 修改 hosts 文件
 
@@ -132,7 +133,31 @@ hosts 文件在每个系统的位置不一，详情如下：
 
 这样每次 hosts 有更新都能及时进行更新，免去手动更新。
 
-### 2.3 一行命令 (适用于类 Unix 系统)
+### 2.3 一行命令
+
+#### Windows
+
+使用命令需要安装[git bash](https://gitforwindows.org/)
+复制以下命令保存到本地命名为**fetch_github_hosts**
+
+```shell
+_hosts=$(mktemp /tmp/hostsXXX)
+hosts=/c/Windows/System32/drivers/etc/hosts
+remote=https://raw.hellogithub.com/hosts
+reg='/# GitHub520 Host Start/,/# Github520 Host End/d'
+
+sed "$reg" $hosts > "$_hosts"
+curl "$remote" >> "$_hosts"
+cat "$_hosts" > "$hosts"
+
+rm "$_hosts"
+```
+
+在**CMD**中执行以下命令，执行前需要替换**git-bash.exe**和**fetch_github_hosts**为你本地的路径，注意前者为windows路径格式后者为shell路径格式
+
+`"C:\Program Files\Git\git-bash.exe" -c "/c/Users/XXX/fetch_github_hosts"`
+
+可以将上述命令添加到windows的task schedular（任务计划程序）中以定时执行
 
 #### GNU（Ubuntu/CentOS/Fedora）
 
@@ -144,7 +169,7 @@ hosts 文件在每个系统的位置不一，详情如下：
 
 将上面的命令添加到 cron，可定时执行。使用前确保 GitHub520 内容在该文件最后部分。
 
-#### 在 Docker 中运行，若遇到 `Device or resource busy` 错误，可使用以下命令执行
+**在 Docker 中运行，若遇到 `Device or resource busy` 错误，可使用以下命令执行**
 
 `cp /etc/hosts ~/hosts.new && sed -i "/# GitHub520 Host Start/Q" ~/hosts.new && curl https://raw.hellogithub.com/hosts >> ~/hosts.new && cp -f ~/hosts.new /etc/hosts`
 
